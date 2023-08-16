@@ -1,0 +1,16 @@
+[book]
+authors = ["aconite"]
+language = "ja"
+multilingual = false
+src = "."
+title = "Leanのインストール方法・elanとlakeの使い方"
+
+[build]
+build-dir = "out"
+
+[output.html]
+git-repository-url = "https://github.com/aconite-ac/how_to_install_lean"
+additional-css = ["./theme/custom.css"] # CSS の追加
+
+[output.html.playground.boring-prefixes]
+lean = "# "
