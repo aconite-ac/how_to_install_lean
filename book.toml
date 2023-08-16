@@ -3,7 +3,7 @@ authors = ["aconite"]
 language = "ja"
 multilingual = false
 src = "."
-title = "Leanのインストール方法・elanとlakeの使い方"
+title = "Leanのインストール方法・elanとLakeの使い方"
 
 [build]
 build-dir = "out"
