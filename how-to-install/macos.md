@@ -2,11 +2,11 @@
 
 ここでは、MacOSにLeanをインストールする手順を説明します。
 
-特に、M1 Macs / Apple Siliconの場合はやや複雑な手順を含みます。行き詰まった場合は、[Lean - Zulip Chat (英語)](https://leanprover.zulipchat.com/)で助けを求めてください。
+特に、M1 Mac / Apple Siliconの場合はやや複雑な手順を含みます。行き詰まった場合は、[Lean - Zulip Chat (英語)](https://leanprover.zulipchat.com/)で助けを求めてください。
 
-**注意**: 以下では翻訳元に従い、Intel Macsについては ``curl`` を利用する方法、M1 Macs / Apple Siliconについては複雑な手順を紹介していますが、翻訳元ならびに以下の記述はLean 3のときの情報から更新されていない可能性があります。少なくとも、**M1 Macs**におけるLeanのインストールについては、Windowsと同様に[VS Codeのlean4拡張機能にelanとLeanをインストールしてもらう簡単な方法](https://aconite-ac.github.io/how_to_install_lean/how-to-install/windows-quickstart.html)が有効だったという報告があります。一方で、**Intel Macs**においては、lean4拡張機能を用いたインストールはうまくいかず、[下記](#intel-macs)のインストール方法が有効だったという報告があります。MacOSへのインストールに関して、以下の記述を更新しうる情報をお持ちの方は、[GitHubのIssues](https://github.com/aconite-ac/how_to_install_lean/issues)へ連絡して頂けると幸いです。
+**注意**: 以下では翻訳元に従い、Intel Macについては ``curl`` を利用する方法、M1 Mac / Apple Siliconについては複雑な手順を紹介していますが、翻訳元ならびに以下の記述はLean 3のときの情報から更新されていない可能性があります。少なくとも、**M1 Mac**におけるLeanのインストールについては、Windowsと同様に[VS Codeのlean4拡張機能にelanとLeanをインストールしてもらう簡単な方法](https://aconite-ac.github.io/how_to_install_lean/how-to-install/windows-quickstart.html)が有効だったという報告があります。一方で、**Intel Mac**においては、lean4拡張機能を用いたインストールはうまくいかず、[下記](#intel-mac)のインストール方法が有効だったという報告があります。MacOSへのインストールに関して、以下の記述を更新しうる情報をお持ちの方は、[GitHubのIssues](https://github.com/aconite-ac/how_to_install_lean/issues)へ連絡して頂けると幸いです。
 
-## Intel Macs
+## Intel Mac
 
 ここでは簡単で高速なインストール方法を紹介します。この手順を使うと、Lean、そのサポートツールである ``elan`` と ``lake``、コードエディタVS CodeとそのLeanプラグインがインストールされます。
 
@@ -18,7 +18,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/leanprover-community/mathlib4/master/scripts/install_macos.sh)" && source ~/.profile
 ```
 
-## M1 Macs / Apple Silicon
+## M1 Mac / Apple Silicon
 
 GitHub Actionsが[まだApple ARM上でのビルドをサポートしていない](https://github.com/actions/virtual-environments/issues/2187)ため、Leanのインストール方法はやや複雑です。
 
