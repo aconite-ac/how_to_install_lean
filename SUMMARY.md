@@ -1,6 +1,6 @@
-# Leanのインストール方法・elanとlakeの使い方
+# Leanのインストール方法・elanとLakeの使い方
 
-[Leanのインストール方法・elanとlakeの使い方](title_page.md)
+[Leanのインストール方法・elanとLakeの使い方](title_page.md)
 
 - [Leanのインストール方法](./how-to-install.md)
   - [Debian/Ubuntu - 簡単な手順](./how-to-install/debian-ubuntu.md)
