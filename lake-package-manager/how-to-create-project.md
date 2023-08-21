@@ -44,12 +44,6 @@ Mathlib4を使うLeanプロジェクト ``my_project`` を新規作成する手�
   lake update
   ```
 
-* 次のコマンドを実行し、``my_project`` 内で使われるLeanのバージョンをMathlib4内で使われるLeanのバージョンに合わせます。
-
-  ```sh
-  curl -L https://raw.githubusercontent.com/leanprover-community/mathlib4/master/lean-toolchain -o lean-toolchain
-  ```
-
 * 次のコマンドを実行し、Mathlib4のキャッシュされたビルド済ファイルをダウンロードします。
 
   ```sh
@@ -120,16 +114,16 @@ import MyProject.Definitions
 
 * ターミナルを開き、フォルダ ``my_project`` に移動します。
 
+* パッケージバージョンを固定しなかった場合、次のコマンドを実行し、``my_project`` 内で使われるLeanのバージョンを最新のMathlib4内で使われるLeanのバージョンに合わせます。
+
+  ```sh
+  curl -L https://raw.githubusercontent.com/leanprover-community/mathlib4/master/lean-toolchain -o lean-toolchain
+  ```
+
 * 次のコマンドを実行し、Mathlib4を含む被依存パッケージをダウンロードします。
 
   ```sh
   lake update
-  ```
-
-* パッケージバージョンを固定しなかった場合、次のコマンドを実行し、``my_project`` 内で使われるLeanのバージョンをMathlib4内で使われるLeanのバージョンに合わせます。
-
-  ```sh
-  curl -L https://raw.githubusercontent.com/leanprover-community/mathlib4/master/lean-toolchain -o lean-toolchain
   ```
 
 * 次のコマンドを実行し、Mathlib4のキャッシュされたビルド済ファイルをダウンロードします。
@@ -144,16 +138,16 @@ import MyProject.Definitions
 
 * ターミナルを開き、フォルダ ``my_project`` に移動します。
 
+* 次のコマンドを実行し、``my_project`` 内で使われるLeanのバージョンを最新のMathlib4内で使われるLeanのバージョンに合わせます。
+
+  ```sh
+  curl -L https://raw.githubusercontent.com/leanprover-community/mathlib4/master/lean-toolchain -o lean-toolchain
+  ```
+
 * 次のコマンドを実行し、Mathlib4を含む被依存パッケージをダウンロードします。
 
   ```sh
   lake update
-  ```
-
-* 次のコマンドを実行し、``my_project`` 内で使われるLeanのバージョンをMathlib4内で使われるLeanのバージョンに合わせます。
-
-  ```sh
-  curl -L https://raw.githubusercontent.com/leanprover-community/mathlib4/master/lean-toolchain -o lean-toolchain
   ```
 
 * 次のコマンドを実行し、Mathlib4のキャッシュされたビルド済ファイルをダウンロードします。
