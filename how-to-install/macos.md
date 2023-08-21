@@ -8,13 +8,13 @@
 
 以下では翻訳元に従い、Intel Macについては ``curl`` を利用する方法、M1 Mac / Apple Siliconについては複雑な手順を紹介していますが、翻訳元ならびに以下の記述はLean 3のときの情報から更新されていない可能性があり、Lean 4ではMacOSにおいても[VS Codeのlean4拡張機能にelanとLeanをインストールしてもらう簡単な方法](./windows-quickstart.md)(以下「Quickstartインストール」とする)が有効である可能性が示唆されています[^1]。少なくとも、**M1 Mac**においては、Windowsと同様にQuickstartインストールが有効だったという報告があります。以上の状況を鑑みて、暫定的ではありますが、この資料では次のようにインストール手順を案内いたします。
 
-1. 簡単な方法でのインストールを希望する場合<br>
+1. 簡単な方法でのインストールを希望する場合:<br>
    [Quickstartインストール](./windows-quickstart.md)を試すことを推奨いたします。
 
-2. より確実な方法でのインストールを希望する場合、またはQuickstartインストールが上手くいかなかった場合<br>
+2. より確実な方法でのインストールを希望する場合、またはQuickstartインストールが上手くいかなかった場合:<br>
    このページの以下に示すインストール方法を推奨いたします。
 
-MacOSにおいて、Quickstartインストールに成功あるいは失敗した場合、[プロセッサあるいはチップの情報付き](https://support.apple.com/ja-jp/HT211814)で[GitHubのIssues](https://github.com/aconite-ac/how_to_install_lean/issues)に報告して頂けると幸いです。情報が集まり次第、このページの内容も更新いたします。
+MacOSにおいて、Quickstartインストールに成功あるいは失敗した場合、[プロセッサあるいはチップの情報付き](https://support.apple.com/ja-jp/HT211814)で[GitHubのIssues](https://github.com/aconite-ac/how_to_install_lean/issues/2)に報告して頂けると幸いです。情報が集まり次第、このページの内容も更新いたします。
 
 ## Intel Mac
 
