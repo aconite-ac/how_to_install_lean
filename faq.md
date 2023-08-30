@@ -16,7 +16,7 @@
 
 <span class="Q">Q.</span> <span class="question">``elan``・``lean``・``lake``(以下、「``lean`` 等」とする) へのパスは自動で通りますか？</span>
 
-<span class="A">A.</span> 例えば、Windowsで[QuickStarkインストール](./how-to-install/windows-quickstart.md)を行った場合は環境変数に``~/.elan/bin``が自動で追加されます。また、Debianでbashをお使いの環境でインストールを行った場合は、設定ファイル``~/.profile``(あるいは ``~/.bash_profile``) が自動で更新され、パスが通ります。zshをお使いの場合も設定ファイルが自動で更新されます。したがって、インストール後にターミナルを再起動すれば ``lean`` 等へのパスは通ります。
+<span class="A">A.</span> 例えば、Windowsで[Quickstartインストール](./how-to-install/windows-quickstart.md)を行った場合は環境変数に``~/.elan/bin``が自動で追加されます。また、Debianでbashをお使いの環境でインストールを行った場合は、設定ファイル``~/.profile``(あるいは ``~/.bash_profile``) が自動で更新され、パスが通ります。zshをお使いの場合も設定ファイルが自動で更新されます。したがって、インストール後にターミナルを再起動すれば ``lean`` 等へのパスは通ります。
    
    ターミナルを再起動したくない場合は、コマンド ``source ~/.elan/env`` を実行すれば現在のターミナルでパスが通ります。``~/.elan/env`` の内容は次の通りです。
 
