@@ -23,3 +23,17 @@ kbd {
     font-size: 100%;
     font-weight: 700;
     box-shadow: none; }
+
+span.Q {
+  font-weight:bold;
+  color: red;
+}
+
+span.A {
+  font-weight:bold;
+  color: blue;
+}
+
+span.question {
+  font-weight:bold;
+}
