@@ -1,0 +1,862 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Leanのインストール方法・elanとLakeの使い方</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="./theme/custom.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme && theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar && sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title_page.html">Leanのインストール方法・elanとlakeの使い方</a></li><li class="chapter-item expanded "><a href="how-to-install.html"><strong aria-hidden="true">1.</strong> Leanのインストール方法</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="how-to-install/debian-ubuntu.html"><strong aria-hidden="true">1.1.</strong> Debian/Ubuntu - 簡単な手順</a></li><li class="chapter-item expanded "><a href="how-to-install/debian-ubuntu-detailed.html"><strong aria-hidden="true">1.2.</strong> Debian/Ubuntu - 詳細な手順</a></li><li class="chapter-item expanded "><a href="how-to-install/linux.html"><strong aria-hidden="true">1.3.</strong> Linux全般</a></li><li class="chapter-item expanded "><a href="how-to-install/macos.html"><strong aria-hidden="true">1.4.</strong> MacOS - 簡単な手順</a></li><li class="chapter-item expanded "><a href="how-to-install/macos-detailed.html"><strong aria-hidden="true">1.5.</strong> MacOS - 詳細な手順</a></li><li class="chapter-item expanded "><a href="how-to-install/windows-quickstart.html"><strong aria-hidden="true">1.6.</strong> Windows - 簡単な説明</a></li><li class="chapter-item expanded "><a href="how-to-install/windows-detailed.html"><strong aria-hidden="true">1.7.</strong> Windows - 詳細な説明</a></li></ol></li><li class="chapter-item expanded "><a href="elan.html"><strong aria-hidden="true">2.</strong> elan: Leanバージョンマネージャ</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="elan/update-lean-and-elan.html"><strong aria-hidden="true">2.1.</strong> Leanとelanのアップデート</a></li></ol></li><li class="chapter-item expanded "><a href="lake-package-manager.html"><strong aria-hidden="true">3.</strong> Lake: Leanパッケージマネージャ編</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="lake-package-manager/how-to-use-existing-project.html"><strong aria-hidden="true">3.1.</strong> 既存のLeanプロジェクトの使い方</a></li><li class="chapter-item expanded "><a href="lake-package-manager/how-to-create-project.html"><strong aria-hidden="true">3.2.</strong> Leanプロジェクトの作り方</a></li></ol></li><li class="chapter-item expanded "><a href="lake-build-system.html"><strong aria-hidden="true">4.</strong> Lake: Leanビルドシステム編</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">5.</strong> FAQ</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Leanのインストール方法・elanとLakeの使い方</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/aconite-ac/how_to_install_lean" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="leanのインストール方法elanとlakeの使い方"><a class="header" href="#leanのインストール方法elanとlakeの使い方">Leanのインストール方法・elanとLakeの使い方</a></h1>
+<p><em>by aconite</em></p>
+<p>このドキュメントは有志による<strong>非公式</strong>資料です。</p>
+<p>Leanのインストール方法と、LeanのバージョンマネージャelanとパッケージマネージャLakeの使い方を紹介します。Leanやelanをアップデートする方法、Mathlibを使用するLeanプロジェクトを作る方法を含みます。</p>
+<p>この資料は<a href="https://github.com/leanprover-community/leanprover-community.github.io/blob/lean4/LICENSE">MIT License</a>に基づいて<a href="https://leanprover-community.github.io/index.html">Lean Community ページ</a>の一部を翻訳した派生成果物と、<a href="https://github.com/leanprover/lean4/blob/master/LICENSE">Apache License 2.0</a>に基づいて<a href="https://leanprover.github.io/lean4/doc/">Lean Manual</a>の一部を翻訳した派生成果物を含みます。</p>
+<p>この資料のソースは<a href="https://github.com/aconite-ac/how_to_install_lean">GitHubリポジトリ</a>から入手可能です。また、ページ右上端のGitHubマークを押してGitHubリポジトリに移動することもできます。この資料の全ページとソースは<a href="LICENSE-APACHE2">Apache License 2.0</a>の下で公開されています。</p>
+<p>誤字脱字、内容の誤りの指摘、フォークからのPull Request、フォークによる資料の改変等は歓迎いたします。基本的に、ご指摘は<a href="https://github.com/aconite-ac/how_to_install_lean/issues">GitHubリポジトリのIssues</a>で受け付けます。</p>
+<p>各ページの下部に参考資料の一覧を掲載しています。主な参考資料は<a href="https://leanprover-community.github.io/index.html">Lean Community</a>のInstallationカテゴリです。主な翻訳元には「翻訳元」と明記しています。また、信頼性の目安となることを想定し、ドメイン名と筆者情報に依って公式情報と判断したものには「公式」と明記していますが、本資料は「公式」と明記した資料が公式情報であることも、「公式」と明記していない資料が非公式情報であることも保証いたしません。</p>
+<p>この資料を参考にして<strong>MacOS</strong>へのLeanのインストールを希望される方は、節「<a href="./how-to-install/macos.html#%E6%B3%A8%E6%84%8F%E3%81%A8%E3%81%8A%E9%A1%98%E3%81%84%E5%BF%85%E3%81%9A%E3%81%8A%E8%AA%AD%E3%81%BF%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84">注意とお願い</a>」を必ずお読みください。</p>
+<p>mdBook付属の検索機能に関して、今のところ日本語検索は非対応です。お手数ですがページ内検索をご活用ください。</p>
+<p>英語資料の翻訳に際して、機械翻訳サービス<a href="https://www.deepl.com/ja/translator">DeepL翻訳</a>を参考にしました。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="leanのインストール方法"><a class="header" href="#leanのインストール方法">Leanのインストール方法</a></h1>
+<p>以下の各OSについてインストール手順を紹介します。</p>
+<ul>
+<li><a href="./how-to-install/debian-ubuntu.html">Debian/Ubuntu</a></li>
+<li><a href="./how-to-install/linux.html">Linux全般</a></li>
+<li><a href="./how-to-install/macos.html">MacOS</a></li>
+<li><a href="./how-to-install/windows-quickstart.html">Windows</a></li>
+</ul>
+<p>インストール不要のオンラインバージョン、<a href="https://live.lean-lang.org/">Lean 4 Web</a>もあります。</p>
+<p>また、GitpodやGitHub codespacesを使うことで、インストールすることなくクラウド上でLeanを使ってみることもできます。例えば、<a href="https://gitpod.io/#/https://github.com/leanprover-community/mathematics_in_lean">GitPod</a>上で練習問題を解きながら、テキスト<a href="https://leanprover-community.github.io/mathematics_in_lean/">Mathematics in Lean</a>を読むことができます。Gitpodを使うには、GitHubかGitLabにログインする必要があることに注意してください。</p>
+<p>インストールに行き詰まった場合は、<a href="https://leanprover.zulipchat.com/">Lean - Zulip Chat (英語)</a>または<a href="https://github.com/orgs/lean-ja/discussions">lean-ja Discussions (日本語)</a>で助けを求めることを検討してください。</p>
+<h2 id="参考資料"><a class="header" href="#参考資料">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/get_started.html">Get started with Lean - Lean Community</a> : 翻訳元、公式。</li>
+<li><a href="https://m-hiyama.hatenablog.com/entry/2022/12/31/183948">プログラミング言語Lean 4の現状 - 檜山正幸のキマイラ飼育記 (はてなBlog)</a> : 檜山正幸さんによるLean 4まとめ記事です。<code>curl</code> によるelan・Leanのインストール方法のほか、Leanプロジェクト・パッケージについても詳説されています。</li>
+<li><a href="https://zenn.dev/labbase/articles/b24dca38e0420d">関数型言語”兼”定理証明支援系Leanの環境構築 - Zenn</a> : denjiryさんによるLeanの環境構築記事です。<code>curl</code> によるelan・Leanのインストール方法、elanとLakeの紹介のほか、エディタとしてEmacsを使う際の設定方法が紹介されています。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="debianubuntuにlean-4をインストールする方法---簡単な手順"><a class="header" href="#debianubuntuにlean-4をインストールする方法---簡単な手順">Debian/UbuntuにLean 4をインストールする方法 - 簡単な手順</a></h1>
+<p>ここでは、Debianから派生したLinuxディストリビューション(Debian、Ubuntu、LMDEなど)にLeanをインストールする簡単で高速な手順を説明します。この手順を使うと、Lean、そのサポートツールであるelanとLake、コードエディタVS CodeとそのLeanプラグイン、そしてcurlやgitのような既にインストールされている可能性のある依存関係パッケージがインストールされます。</p>
+<p>ただし、この方法はbashスクリプトによるsudoコマンドの実行を含むほか、インストールプロセスの細部が分からないというデメリットもあります。ここで紹介するコマンドや、コマンド内で実行されるbashスクリプトが信頼できない場合は、この方法は使わず、代わりに<a href="how-to-install/./debian-ubuntu-detailed.html">より詳細なインストール手順</a>をご覧ください。</p>
+<p>ターミナルを開き、次のように入力して実行すると、簡単で高速にLean 4をインストールすることができます。</p>
+<pre><code class="language-bash">wget -q https://raw.githubusercontent.com/leanprover-community/mathlib4/master/scripts/install_debian.sh &amp;&amp; bash install_debian.sh ; rm -f install_debian.sh &amp;&amp; source ~/.profile
+</code></pre>
+<h2 id="参考資料-1"><a class="header" href="#参考資料-1">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/debian.html">How to install Lean 4 on Debian/Ubuntu - Lean Community</a> : 翻訳元、公式。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="debianubuntuにlean-4をインストールする方法---詳細な手順"><a class="header" href="#debianubuntuにlean-4をインストールする方法---詳細な手順">Debian/UbuntuにLean 4をインストールする方法 - 詳細な手順</a></h1>
+<p>ここでは、Debianから派生したLinuxディストリビューション(Debian、Ubuntu、LMDEなど)にLean 4をインストールする、より詳細な手順を説明します。<a href="how-to-install/./debian-ubuntu.html">簡単で高速なインストール手順</a>もありますが、この手順を利用するには実行されるコマンドやbashスクリプトを信頼する必要があります。</p>
+<p>厳密にいえば、ここで紹介する手順もシェルスクリプトの実行を含みます。<a href="https://github.com/leanprover/elan/blob/master/elan-init.sh">elan_init</a>を読むことで、以下のインストール手順のより細部を知ることができます。</p>
+<ul>
+<li>
+<p>Lean自体を動かすために必要なパッケージは少ないですが、<code>elan</code> のインストールや <code>lake</code> を使ったLeanプロジェクト作成には <code>git</code> と <code>curl</code> が必要です。したがって、まずは <code>git</code> と <code>curl</code> をインストールします。</p>
+<pre><code class="language-bash">sudo apt install git curl
+</code></pre>
+</li>
+<li>
+<p>次は、<code>elan</code> と呼ばれる小さなツールをインストールします。このツールは、Leanをアップデートしたり、Leanプロジェクトの要求に応じたバージョンのLeanを提供したりします。コマンドの実行中に質問が表示されたらEnterキーを押してください。elanは <code>$HOME/.elan</code> にインストールされ、<code>$HOME/.profile</code> に1行追加されます。</p>
+<pre><code class="language-bash">curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
+</code></pre>
+</li>
+<li>
+<p>VS Code、Emacs、Neovimの3つのエディタ上でLeanを使うことができます。おすすめのエディタは<a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a>です。Leanにとって、VS Codeは最も完成度が高く、よくテストされたサポートを提供するエディタです。次のコマンドにより、VS Codeがインストールされます。</p>
+<pre><code class="language-bash">wget -O code.deb https://go.microsoft.com/fwlink/?LinkID=760868
+sudo apt install ./code.deb
+rm code.deb
+code --install-extension leanprover.lean4
+</code></pre>
+</li>
+</ul>
+<p>以上の手順が終わったら、VS Codeを開き、Leanが動作していることを確認してください。例えば、ファイルに <code>test.lean</code> と名前を付けて保存し、<code>#eval 1+1</code> と入力してみてください。<code>#eval 1+1</code> の下部に緑色の線が表示され、そこにマウスを乗せたときに <code>2</code> と表示されたらインストール成功です。</p>
+<p>他の選択肢として、Emacsと<a href="https://github.com/leanprover/lean4-mode">lean4-mode</a>を使ってLeanを扱うこともできます。また、Neovimと<a href="https://github.com/Julian/lean.nvim">lean.nvim extension</a>を使うことも可能です。</p>
+<h2 id="参考資料-2"><a class="header" href="#参考資料-2">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/debian_details.html">Controlled installation of Lean 4 on Debian/Ubuntu - Lean Community</a> : 翻訳元、公式。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="linux全般にlean-4をインストールする方法"><a class="header" href="#linux全般にlean-4をインストールする方法">Linux全般にLean 4をインストールする方法</a></h1>
+<p>ここでは、Linux全般にLeanをインストールする方法を説明します。(Debianとその派生ディストリビューションへのインストール方法は<a href="how-to-install/./debian-ubuntu.html">こちらのページ</a>をご覧ください。)</p>
+<p>以下の全てのコマンドはターミナル内で入力してください。</p>
+<ul>
+<li>
+<p>Lean自体を動かすために必要なパッケージは少ないですが、<code>elan</code> のインストールや <code>lake</code> を使ったLeanプロジェクト作成には <code>git</code> と <code>curl</code> が必要です。したがって、まずは <code>git</code> と <code>curl</code> をインストールしてください。</p>
+</li>
+<li>
+<p>次は、<code>elan</code> と呼ばれる小さなツールをインストールします。このツールは、Leanをアップデートしたり、Leanプロジェクトの要求に応じたバージョンのLeanを提供したりします。コマンドの実行中に質問が表示されたらEnterキーを押してください。elanは <code>$HOME/.elan</code> にインストールされ、<code>$HOME/.profile</code> に1行追加されます。</p>
+<pre><code class="language-bash">curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
+</code></pre>
+</li>
+<li>
+<p>VS Code、Emacs、Neovimの3つのエディタ上でLeanを使うことができます。おすすめのエディタは<a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a>です。Leanにとって、VS Codeは最も完成度が高く、よくテストされたサポートを提供するエディタです。次の手順により、VS Codeがインストールされます。</p>
+<ol>
+<li><a href="https://code.visualstudio.com/">VS Code</a>をインストールします。</li>
+<li>VS Codeを起動します。</li>
+<li>スクリーンの左端のサイドバーにある拡張機能アイコン <img src="how-to-install/img/new-extensions-icon.png" alt="(image of icon)" /> (古いバージョンでは <img src="how-to-install/img/extensions-icon.png" alt="(image of icon)" /> ) をクリックし(あるいは<kbd>Shift</kbd>-<kbd>Ctrl</kbd>-<kbd>X</kbd>を押し)、<code>leanprover</code> と検索します。</li>
+<li><code>lean4</code> 拡張機能(<code>leanprover.lean4</code> という一意の名前を持ちます)を選びます。 </li>
+<li>「Install」をクリックします。(古いバージョンのVS Codeを使っている場合、インストール後に「reload」をクリックする必要があります。)</li>
+<li>Leanが動作していることを確認してください。例えば、ファイルに <code>test.lean</code> と名前を付けて保存し、<code>#eval 1+1</code> と入力してみてください。<code>#eval 1+1</code> の下部に緑色の線が表示され、そこにマウスを乗せたときに <code>2</code> と表示されたらインストール成功です。</li>
+</ol>
+</li>
+</ul>
+<p>他の選択肢として、Emacsと<a href="https://github.com/leanprover/lean4-mode">lean4-mode</a>を使ってLeanを扱うこともできます。また、Neovimと<a href="https://github.com/Julian/lean.nvim">lean.nvim extension</a>を使うことも可能です。</p>
+<h2 id="参考資料-3"><a class="header" href="#参考資料-3">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/linux.html">Installing Lean 4 on Linux - Lean Community</a> : 翻訳元、公式。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="macosにlean-4をインストールする方法---簡単な手順"><a class="header" href="#macosにlean-4をインストールする方法---簡単な手順">MacOSにLean 4をインストールする方法 - 簡単な手順</a></h1>
+<p>ここでは、MacOSにLeanをインストールする手順を説明します。</p>
+<p>特に、M1 Mac / Apple Siliconの場合はやや複雑な手順を含みます。行き詰まった場合は、<a href="https://leanprover.zulipchat.com/">Lean - Zulip Chat (英語)</a>または<a href="https://github.com/orgs/lean-ja/discussions">lean-ja Discussions (日本語)</a>で助けを求めてください。</p>
+<h2 id="注意とお願い必ずお読みください"><a class="header" href="#注意とお願い必ずお読みください">注意とお願い(必ずお読みください)</a></h2>
+<p>以下では翻訳元に従い、Intel Macについては <code>curl</code> を利用する方法、M1 Mac / Apple Siliconについては複雑な手順を紹介していますが、翻訳元ならびに以下の記述はLean 3のときの情報から更新されていない可能性があり、Lean 4ではMacOSにおいても<a href="how-to-install/./windows-quickstart.html">VS Codeのlean4拡張機能にelanとLeanをインストールしてもらう簡単な方法</a>(以下「Quickstartインストール」とする)が有効である可能性が示唆されています<sup class="footnote-reference"><a href="#1">1</a></sup>。少なくとも、<strong>M1 Mac</strong>・<strong>M2 Mac</strong>においては、Windowsと同様にQuickstartインストールが有効だったという報告があります。以上の状況を鑑みて、暫定的ではありますが、この資料では次のようにインストール手順を案内いたします。</p>
+<ol>
+<li>
+<p>簡単な方法でのインストールを希望する場合:<br>
+<a href="how-to-install/./windows-quickstart.html">Quickstartインストール</a>を試すことを推奨いたします。</p>
+</li>
+<li>
+<p>より確実な方法でのインストールを希望する場合、またはQuickstartインストールが上手くいかなかった場合:<br>
+このページの以下に示すインストール方法を推奨いたします。</p>
+</li>
+</ol>
+<p>MacOSにおいて、Quickstartインストールに成功あるいは失敗した場合、<a href="https://support.apple.com/ja-jp/HT211814">プロセッサあるいはチップの情報付き</a>で<a href="https://github.com/aconite-ac/how_to_install_lean/issues/2">GitHubのIssues</a>に報告して頂けると幸いです。情報が集まり次第、このページの内容も更新いたします。</p>
+<h2 id="intel-mac"><a class="header" href="#intel-mac">Intel Mac</a></h2>
+<p>ここでは簡単で高速なインストール方法を紹介します。この手順を使うと、Lean、そのサポートツールである <code>elan</code> と <code>lake</code>、コードエディタVS CodeとそのLeanプラグインがインストールされます。</p>
+<p>ただし、この方法はbashスクリプトによるsudoコマンドの実行を含むほか、インストールプロセスの細部が分からないというデメリットもあります。ここで紹介するコマンドや、コマンド内で実行されるシェルスクリプトが信頼できない場合は、この方法は使わず、代わりに<a href="how-to-install/./macos-detailed.html">より詳細なインストール手順</a>をご覧ください。</p>
+<p>ターミナルを開き、次のように入力して実行すると、簡単で高速にLean 4をインストールすることができます。</p>
+<pre><code class="language-bash">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/leanprover-community/mathlib4/master/scripts/install_macos.sh)&quot; &amp;&amp; source ~/.profile
+</code></pre>
+<h2 id="m1-mac--apple-silicon"><a class="header" href="#m1-mac--apple-silicon">M1 Mac / Apple Silicon</a></h2>
+<p>GitHub Actionsが<a href="https://github.com/actions/virtual-environments/issues/2187">まだApple ARM上でのビルドをサポートしていない</a>ため、Leanのインストール方法はやや複雑です。</p>
+<p>具体的には、Leanのバージョンマネージャ <code>elan</code> は、通常の方法でインストールされた場合、インストールされたデバイス上のLeanバイナリをフェッチすることができません。</p>
+<p>以下の手順は<a href="https://leanprover.zulipchat.com/#narrow/stream/113489-new-members/topic/M1.20Macs.3A.20Installing.20the.20Lean.203.20toolchain/near/262832039">Fedor Pavutnitskiy</a>氏からの引用です。この手順を使うと、<a href="https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment">Rosetta</a> を通して <code>elan</code> をインストールすることができます。</p>
+<ol>
+<li>
+<p>新しいターミナルウィンドウを開き、次のコマンドを実行します。XCode Command Line ToolsとRosetta 2がインストールされます。</p>
+<pre><code>xcode-select --install
+softwareupdate --install-rosetta
+</code></pre>
+</li>
+<li>
+<p>x86版のHomebrewをインストールします。最も簡単な方法は、Rosetta 2を使ってx86が動作するシェルを立ち上げる方法です。まず、次のコマンドを実行し、x86が動作するシェルを立ち上げます。</p>
+<pre><code>arch -x86_64 zsh
+</code></pre>
+<p>以降のコマンドはこのx86が動作するシェルウィンドウの中で実行しますが、一度インストールが完了すれば、インストールされたツールはどのシェルでも動作するはずです。</p>
+</li>
+<li>
+<p>次のコマンドを実行し、x86版のHomebrewをインストールします。これは <code>/opt</code> ではなく <code>/usr/local</code> に自動的にインストールされるはずです。</p>
+<pre><code>/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+</code></pre>
+</li>
+<li>
+<p>今インストールしたバージョンの <code>brew</code> を使って、<a href="how-to-install/./macos-detailed.html">MacOSへの詳細なインストール手順</a>と同様の次のコマンドを実行します。</p>
+<pre><code>/usr/local/bin/brew install elan-init
+elan toolchain install stable
+elan default stable
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行してVisual Studio CodeとそのLean拡張機能をインストールします。コマンド内で <code>brew</code> のバージョンが指定されていませんが、x86版の <code>brew</code> でもARM版の <code>brew</code> でも正常に動作するはずです。</p>
+<pre><code>brew install --cask visual-studio-code &amp;&amp; code --install-extension leanprover.lean4
+</code></pre>
+</li>
+</ol>
+<p><a href="https://leanprover.zulipchat.com/#narrow/stream/113489-new-members/topic/M1.20macs">Zulipスレッド (英語)</a>にインストール過程の詳細とアドバイスが書かれています。問題が起きたときは、遠慮なく助けを求めてください。</p>
+<p>新しいターミナルを開いたときに <code>command not found</code> エラーが発生した場合は、MacOSからログアウトして再度ログインすれば解決するはずです。</p>
+<h2 id="参考資料-4"><a class="header" href="#参考資料-4">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/macos.html">How to install Lean 4 on MacOS - Lean Community</a> : 翻訳元、公式。</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://leanprover.zulipchat.com/#narrow/stream/113489-new-members/topic/.E2.9C.94.20Install.20Lean.204.20on.20Mac/near/385825690">Install Lean 4 on Mac - Lean - Zulip</a></p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="macosintel-macにlean-4をインストールする方法---詳細な手順"><a class="header" href="#macosintel-macにlean-4をインストールする方法---詳細な手順">MacOS(Intel Mac)にLean 4をインストールする方法 - 詳細な手順</a></h1>
+<p>ここでは、MacOS(Intel Mac)にLean 4をインストールする、より詳細な手順を説明します。<a href="how-to-install/./macos.html">簡単で高速なインストール手順</a>もありますが、この手順を利用するには実行されるコマンドやbashスクリプトを信頼する必要があります。</p>
+<p>Leanを使うにあたり、まずLeanと、Leanを扱う機能を持つエディタをセットアップする必要があります。Leanを直接インストールする代わりに、Leanをアップデートしたり、Leanプロジェクトの要求に応じたバージョンのLeanを提供する、<a href="https://github.com/leanprover/elan">elan</a>という名前の小さなプログラム(バージョンマネージャ)をインストールします。elanのインストールは全てのユーザに推奨されます。</p>
+<h2 id="elanとleanのインストール"><a class="header" href="#elanとleanのインストール">elanとLeanのインストール</a></h2>
+<ol>
+<li>
+<p>まだHomebrewをインストールしていない場合は、<a href="https://brew.sh/">Homebrew</a>をインストールします。</p>
+</li>
+<li>
+<p>ターミナルウィンドウ内で次のコマンドを実行し、<code>elan</code> をインストールします。</p>
+<pre><code>brew install elan-init
+</code></pre>
+<p>Homebrewに <code>lean</code> という名前のformulaがありますが、これはバージョン固定のLeanをインストールすることに注意してください。この場合、<code>elan</code> によってLeanプロジェクトの要求に応じたバージョンのLeanが提供されることはありません。このformulaの使用は<strong>推奨されません</strong>。</p>
+</li>
+<li>
+<p>次のコマンドを実行し、<code>lean</code> の最新のstableバージョンをインストールします。</p>
+<pre><code>elan toolchain install stable
+</code></pre>
+<p>次のコマンドを使うと、今インストールしたLeanのバージョンをデフォルトバージョンに設定することができます。Leanプロジェクトの外部でLeanを使う際は、このデフォルトバージョンが提供されます。</p>
+<pre><code>elan default stable
+</code></pre>
+</li>
+</ol>
+<h2 id="エディタのインストールと設定"><a class="header" href="#エディタのインストールと設定">エディタのインストールと設定</a></h2>
+<p>VS Code、Emacs、Neovimの3つのエディタ上でLeanを使うことができます。このドキュメントでは、VS Codeを使う方法を説明します。VS CodeはLeanに最も良好なサポートを提供します。Emacsを使う場合は、<a href="https://github.com/leanprover/lean4-mode">https://github.com/leanprover/lean4-mode</a>をご覧ください。Neovimを使う場合は、<a href="https://github.com/Julian/lean.nvim">https://github.com/Julian/lean.nvim</a>をご覧ください。</p>
+<ol>
+<li><a href="https://code.visualstudio.com/">VS Code</a>をインストールします。</li>
+<li>VS Codeを起動します。</li>
+<li>スクリーンの左端のサイドバーにある拡張機能アイコン <img src="how-to-install/img/new-extensions-icon.png" alt="(image of icon)" /> (古いバージョンでは <img src="how-to-install/img/extensions-icon.png" alt="(image of icon)" /> ) をクリックし(あるいは<kbd>⇧ Shift</kbd><kbd>⌘ Command</kbd><kbd>X</kbd>を押し)、<code>leanprover</code> と検索します。</li>
+<li><code>lean4</code> 拡張機能(<code>leanprover.lean4</code> という一意の名前を持ちます)を選びます。 </li>
+<li>「Install」をクリックします。(古いバージョンのVS Codeを使っている場合、インストール後に「reload」をクリックする必要があります。)</li>
+<li>Leanが動作していることを確認してください。例えば、ファイルに <code>test.lean</code> と名前を付けて保存し、<code>#eval 1+1</code> と入力してみてください。<code>#eval 1+1</code> の下部に緑色の線が表示され、そこにマウスを乗せたときに <code>2</code> と表示されたらインストール成功です。</li>
+</ol>
+<h2 id="参考資料-5"><a class="header" href="#参考資料-5">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/macos_details.html">Controlled installation of Lean 4 on MacOS - Lean Community</a> : 翻訳元、公式。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windowsにlean-4をインストールする方法---簡単な説明"><a class="header" href="#windowsにlean-4をインストールする方法---簡単な説明">WindowsにLean 4をインストールする方法 - 簡単な説明</a></h1>
+<p>ここでは、VS CodeでLeanを扱えるようにし、そしてLeanをセットアップする方法を簡単に説明します。このインストール手順では、Lakeを使ってLeanプロジェクトを作るために必要な <code>git</code> がインストールされないことに注意してください。<code>git</code> のインストール方法を知りたい場合や、詳細な説明を読みたい場合は、<a href="how-to-install/./windows-detailed.html">このページ</a>をご覧ください。</p>
+<ol>
+<li>
+<p>まず、<a href="https://code.visualstudio.com/">VS Code</a>をインストールします。</p>
+</li>
+<li>
+<p>VS Codeを起動し、<code>lean4</code> 拡張機能をインストールします。</p>
+<p><img src="how-to-install/img/code-ext.png" alt="vscode-lean4 拡張機能のインストール" /></p>
+</li>
+<li>
+<p>画面上部にある <code>File</code> メニューを開き、<code>New text file</code> を選びます(ショートカット: <code>Ctrl+N</code>)。<code>Untitled-1</code> とラベルされた新しいウィンドウが開きます。新しいウィンドウには <code>Select a language</code> と表示されます。この表示をクリックし、<code>lean4</code> を選びます。画面右下に次のようなポップアップが表示されます。</p>
+<p><img src="how-to-install/img/install_elan.png" alt="elan" /></p>
+<p>「Install Lean using Elan」ボタンをクリックします。<code>VS Code</code> 内でターミナルウィンドウが立ち上がり、インストールが始まります。ウィンドウ内には次のような出力を含むテキストが表示されるはずです。</p>
+<pre><code>info: syncing channel updates for 'nightly'
+info: latest update on nightly, lean version nightly-2023-06-27
+info: downloading component 'lean'
+</code></pre>
+<p>もし <code>Failed to start 'lean' language server</code> と書かれたポップアップが表示されなかった場合、<code>elan</code> が既にインストールされている可能性があります。その場合、コマンド <code>elan default leanprover/lean4:nightly</code> を実行し、デフォルトツールチェインがLean 4であることを確定させ、それから再びVS Code内でテキストファイルを開いてください。この操作を行わなかった場合、次のステップで失敗する可能性があります。</p>
+</li>
+<li>
+<p>インストールが終わったら、Lean言語サーバーが自動的に立ち上がり、シンタックスハイライトが有効になり、「Lean Infoview」ウィンドウが右側に表示されます。以上を確認したら、次のコードをLeanファイルにペーストします。</p>
+<pre><code class="language-lean">#eval Lean.versionString
+</code></pre>
+<p>このコードの末尾にカーソルを合わせると、「Lean Infoview」ウィンドウにインストールされたLeanのバージョンが表示されます。</p>
+<p><img src="how-to-install/img/code-success.png" alt="セットアップ成功" /></p>
+</li>
+</ol>
+<p>この表示が確認できたら、セットアップ成功です！</p>
+<h2 id="参考資料-6"><a class="header" href="#参考資料-6">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover.github.io/lean4/doc/quickstart.html">Setting Up Lean - Lean Manual</a> : 翻訳元、公式。</li>
+<li><a href="https://www.youtube.com/watch?v=jB1eB6PjrUY">定理証明支援系Lean 4導入手順【VOICEROID解説】 - YouTube</a> : ぐにらちさんによる、上記インストール手順の解説動画です。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="windowsにlean-4をインストールする方法---詳細な説明"><a class="header" href="#windowsにlean-4をインストールする方法---詳細な説明">WindowsにLean 4をインストールする方法 - 詳細な説明</a></h1>
+<p>ここでは、WindowsにLeanをインストールする方法を説明します。</p>
+<p>Leanを使うにあたり、まずLeanと、Leanを扱う機能を持つエディタをセットアップする必要があります。Leanを直接インストールする代わりに、Leanをアップデートしたり、Leanプロジェクトの要求に応じたバージョンのLeanを提供する、<a href="https://github.com/leanprover/elan">elan</a>という名前の小さなプログラム(バージョンマネージャ)をインストールします。elanのインストールは全てのユーザに推奨されます。</p>
+<h2 id="visual-studio-codeのインストール"><a class="header" href="#visual-studio-codeのインストール">Visual Studio Codeのインストール</a></h2>
+<p>全てのWindowsユーザーに対して、エディタ <code>Visual Studio Code(VS Code)</code> を使ってLeanを扱うことをお勧めします。<a href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a>から <code>VS Code</code> をインストールすることができます。</p>
+<h2 id="gitのインストール"><a class="header" href="#gitのインストール">gitのインストール</a></h2>
+<p>Lean 4 プロジェクト間の依存関係は、gitリポジトリへのポインタを介して実装されています。したがって、Leanプロジェクトを作るには、お使いのコンピュータにgitをインストールする必要があります。</p>
+<p>既にgitをインストールしてある場合は、このステップを飛ばすことができます。</p>
+<p>もしgitがインストールされていないなら、<a href="https://gitforwindows.org/">Git for Windows</a>をインストールすることをお勧めします。インストール中、多くの質問を受けますが、デフォルトエディタに関する質問<strong>以外は</strong>デフォルトの選択肢を選ぶことをお勧めします。デフォルトエディタに関する質問では、デフォルト選択肢 <code>vi</code> の代わりに <code>Visual Studio Code</code> を選ぶことをお勧めします。</p>
+<p>編集するテキストファイルの改行コードを変えないようにするために(改行コードをLFで統一するために)、コマンド <code>git config --global core.autocrlf input</code> を実行することをお勧めします。</p>
+<h2 id="vs-codeにlean4拡張機能をインストール"><a class="header" href="#vs-codeにlean4拡張機能をインストール">VS Codeにlean4拡張機能をインストール</a></h2>
+<p><code>VS Code</code> を開き、画面左端の「アクティビティバー」の中にある「拡張機能」アイコン <img src="how-to-install/img/new-extensions-icon.png" alt="(image of icon)" /> をクリックします。</p>
+<p>検索ボックスが表示されるので、<code>lean4</code> と入力し、検索結果に表示される <code>lean4</code> 拡張機能を選択します。「Install」ボタンをクリックすると拡張機能がインストールされます。</p>
+<h2 id="elanとleanのセットアップ"><a class="header" href="#elanとleanのセットアップ">elanとLeanのセットアップ</a></h2>
+<p><code>elan</code> と <code>lean</code> のセットアップについては、<code>VS Code</code> の <code>lean4</code> 拡張機能に任せることも、手動でセットアップすることもできます。<code>lean4</code> 拡張機能にセットアップを任せることをお勧めしますが、以下では両方の手順を説明します。</p>
+<h3 id="lean4拡張機能にelanとleanをインストールしてもらう方法"><a class="header" href="#lean4拡張機能にelanとleanをインストールしてもらう方法">lean4拡張機能にelanとLeanをインストールしてもらう方法</a></h3>
+<p>画面上部にある <code>File</code> メニューを開き、<code>New text file</code> を選びます。<code>Untitled-1</code> とラベルされた新しいウィンドウが開きます。</p>
+<p>新しいウィンドウには <code>Select a language</code> と表示されます。この表示をクリックし、<code>lean4</code> を選びます。(画面右下端に表示される <code>Plain text</code> をクリックして言語を選択することもできます。また、<code>Ctrl+Shift+P</code> を押して「コマンドパレット」を開き、そこで <code>Change language mode</code> を選んで言語を選択することもできます。)</p>
+<p>言語を <code>lean4</code> に設定すると、画面右下端に、<code>Failed to start 'lean' language server</code> と書かれた、<code>Install Lean using Elan</code> ボタン付きのダイアログボックスが表示されます。</p>
+<p><code>Install Lean using Elan</code> ボタンをクリックします。そうすると、<code>VS Code</code> 内でターミナルウィンドウが立ち上がり、インストールが始まります。<code>Lean</code> のダウンロードとインストールには1分程度かかります。</p>
+<p>インストールが終わったら、<code>Untitled-1</code> ウィンドウに戻り、次のように入力します。</p>
+<pre><code class="language-lean">#eval 18 + 19
+</code></pre>
+<p><code>#eval</code> の下に青い波線が引かれ、右側の <code>Lean Infoview</code> パネルに <code>37</code> が表示されたら、Lean 4のインストールは成功です！</p>
+<h3 id="手動でelanをインストールする方法"><a class="header" href="#手動でelanをインストールする方法">手動でelanをインストールする方法</a></h3>
+<p>コマンドプロンプト(<code>cmd</code>)を開き、次のコマンドを実行します。</p>
+<pre><code class="language-shell">curl -O --location https://raw.githubusercontent.com/leanprover/elan/master/elan-init.ps1
+powershell -ExecutionPolicy Bypass -f elan-init.ps1
+del elan-init.ps1
+</code></pre>
+<p>あるいは、<code>Git Bash</code> を開き、次のコマンドを実行します。</p>
+<pre><code class="language-shell">curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
+</code></pre>
+<p>どちらの方法でも、<code>elan</code> のインストールには1分程度かかります。インストールが終わったら、<code>VS Code</code> を開き、画面上部にある <code>File</code> メニューを開き、<code>New text file</code> を選びます。新しいテキストが開かれたら、<code>Select a language</code> と書かれた部分をクリックし、<code>lean4</code> を選びます。(あるいは、新しいテキストを <code>.lean</code> 拡張子で保存します。)</p>
+<p>それから、次のように入力して、Leanがユーザーの入力に反応することを確認してください。</p>
+<pre><code class="language-lean">#eval 18 + 19
+</code></pre>
+<p>以上でインストールは完了です！</p>
+<h2 id="参考資料-7"><a class="header" href="#参考資料-7">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/windows.html">Installing Lean 4 on Windows - Lean Community</a> : 翻訳元、公式。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="elan-leanバージョンマネージャ"><a class="header" href="#elan-leanバージョンマネージャ">elan: Leanバージョンマネージャ</a></h1>
+<p><strong>elan</strong>は、Leanをインストール・アップデートしたり、Leanプロジェクトの要求に応じたバージョンのLeanを提供したりする、Leanの小さなバージョンマネージャです。</p>
+<h2 id="elanのインストール方法"><a class="header" href="#elanのインストール方法">elanのインストール方法</a></h2>
+<p><a href="./how-to-install.html">インストールページ</a>に従ってLeanがインストールされていれば、elanもインストールされているはずです。手動でインストールしたい場合はここに挙げる方法を使ってください。</p>
+<p>手動でインストールする場合は、ターミナル内で次のコマンドを実行します。</p>
+<p><strong>Linux/macOS/Cygwin/MSYS2/git bash/...</strong>:</p>
+<pre><code class="language-bash">curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
+</code></pre>
+<p><strong>Windows</strong>:</p>
+<pre><code class="language-bash">curl -O --location https://raw.githubusercontent.com/leanprover/elan/master/elan-init.ps1
+powershell -ExecutionPolicy Bypass -f elan-init.ps1
+del elan-init.ps1
+</code></pre>
+<p>あるいは、<a href="https://github.com/leanprover/elan/releases/latest">最新のリリース</a>をダウンロードし、解凍し、その中のインストールプログラムを実行させてelanをインストールすることもできます。</p>
+<p>ここで説明したインストール方法を実行した場合、インストーラは <code>elan</code>、<code>lean</code>、<code>lake</code> のバイナリを <code>~/.elan/bin</code> にインストールすること、<code>~/.profile</code> を更新して <code>~/.elan/bin</code> をPATH環境変数に加えることを説明します。<code>~/.profile</code> の更新により、次回以降シェルを起動した際は自動で <code>~/.elan/bin</code> にパスが通りますが、現在のシェルにおいてパスを通したい場合はコマンド <code>source ~/.elan/env</code> を実行してください。</p>
+<h2 id="elanのフォーク元"><a class="header" href="#elanのフォーク元">elanのフォーク元</a></h2>
+<p>elanはRustのツールチェイン・インストーラ<a href="https://github.com/rust-lang/rustup">rustup</a>のフォークです。基本的に、RustとLeanを比較すると、<code>rustup</code> は <code>elan</code> に、<code>cargo</code> は <code>lake</code> に相当します。</p>
+<h2 id="elanに関する用語"><a class="header" href="#elanに関する用語">elanに関する用語</a></h2>
+<ul>
+<li>toolchain(ツールチェーン) : 特定のバージョンのLean一式のことです。</li>
+<li>channel(チャンネル) : ツールチェーンの系統のことです。Lean4には <code>nightly</code> と <code>stable</code> の2つのチャンネルがあります。</li>
+</ul>
+<h2 id="参考資料-8"><a class="header" href="#参考資料-8">参考資料</a></h2>
+<ul>
+<li><a href="https://github.com/leanprover/elan">leanprover/elan: A Lean version manager - GitHub</a> : 翻訳元、公式。上記の情報に加え、HomebrewやNixを使ったインストール方法や、elanのビルド方法が紹介されています。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="leanとelanのアップデート"><a class="header" href="#leanとelanのアップデート">Leanとelanのアップデート</a></h1>
+<p>以下のコマンドは全てターミナル上で実行するものです。また、<code>#</code> はコメントを表します(rootユーザでのコマンドの行頭の記号を表すものではありません)。</p>
+<h2 id="elanのヘルプ情報を表示する"><a class="header" href="#elanのヘルプ情報を表示する">elanのヘルプ情報を表示する</a></h2>
+<p>次のコマンドを実行すると、elanのヘルプ情報(使い方等)を表示することができます。</p>
+<pre><code class="language-sh">elan -h
+</code></pre>
+<h2 id="elanのアップデート"><a class="header" href="#elanのアップデート">elanのアップデート</a></h2>
+<p>次のコマンドを実行すると、elan自体をアップデートすることができます。Windowsをお使いの場合、VS Codeが起動していない状態でこのコマンドを実行してください。<sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<pre><code class="language-sh">elan self update
+</code></pre>
+<p>次のコマンドを実行すると、elanのバージョンが表示されます。</p>
+<pre><code class="language-sh">elan -V
+</code></pre>
+<h2 id="leanのアップデート"><a class="header" href="#leanのアップデート">Leanのアップデート</a></h2>
+<p>次のコマンドを実行すると、elanとLeanの両方をアップデートすることができます。</p>
+<pre><code class="language-sh">elan update
+</code></pre>
+<p>次のコマンドを実行すると、インストール済みのツールチェーンの一覧と現在アクティブなツールチェーンを表示します。</p>
+<pre><code class="language-sh">elan show
+</code></pre>
+<h2 id="デフォルトツールチェーンの変更"><a class="header" href="#デフォルトツールチェーンの変更">デフォルトツールチェーンの変更</a></h2>
+<p>次のコマンドを実行すると、指定したツールチェーンをインストールし、そのツールチェーンをデフォルトに設定します。</p>
+<pre><code class="language-sh"># elan default &lt;ツールチェーン名&gt;
+elan default leanprover/lean4:nightly
+# 例えば、stableチャンネルのツールチェーンに切り替えたいときは次を実行する:
+# elan default leanprover/lean4:stable
+</code></pre>
+<h2 id="参考資料-9"><a class="header" href="#参考資料-9">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover.github.io/lean4/doc/setup.html">Extended Setup Notes - Lean Manual</a> : 翻訳元、公式。</li>
+<li><a href="https://rust-lang.github.io/rustup/concepts/channels.html">Channels - The rustup book</a> : Rust公式。</li>
+<li><a href="https://rust-lang.github.io/rustup/concepts/toolchains.html">Toolchains - The rustup book</a> : Rust公式。</li>
+<li><a href="https://m-hiyama.hatenablog.com/entry/2022/12/31/183948">プログラミング言語Lean 4の現状 - 檜山正幸のキマイラ飼育記 (はてなBlog)</a> : 檜山正幸さんによるLean 4まとめ記事です。上記の内容に加え、ツールチェーン名の命名パターンが詳説されているほか、具体的なコマンドの実行例が掲載されています。</li>
+</ul>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Windowsにおいて、VS Code起動中に <code>elan self update</code> を実行するとエラーになることが報告されています(<a href="https://github.com/leanprover/elan/issues/95">Issue #95 · leanprover/elan</a>)。</p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lake-leanパッケージマネージャ編"><a class="header" href="#lake-leanパッケージマネージャ編">Lake: Leanパッケージマネージャ編</a></h1>
+<p><strong>Lake</strong>(Lean Make)はLean 4のためのビルドシステム兼パッケージマネージャです。Lakeを使うと、Leanパッケージを作ることができ、そしてLeanパッケージの設定をLean自体で書くことができます。Leanパッケージの設定はパッケージのルートディレクトリの <code>lakefile.lean</code> というファイルに保存されます。</p>
+<p><code>lakefile.lean</code> は、パッケージの基本設定を定義する <code>package</code> 宣言を含みます。また、通常、Leanライブラリやバイナリ実行ファイルなどのためのビルド設定と、コマンドラインでコマンド <code>lake script run</code> によって実行されるLeanスクリプト宣言も含みます。</p>
+<p>この章では、Lakeのパッケージマネージャとしての側面に焦点を当てます。基本的に、パッケージの作成・管理には<strong>Gitが必要</strong>です。まだGitをインストールしていない場合は、先にGitのインストールを済ませてください。</p>
+<h2 id="lakeのインストール方法"><a class="header" href="#lakeのインストール方法">Lakeのインストール方法</a></h2>
+<p>Lakeは<a href="https://github.com/leanprover/lean4">lean4</a>リポジトリの一部として、つまり<a href="https://github.com/leanprover/elan">elan</a>ツールチェーンの一部として、Leanの公式リリースに付属しています。したがって、もしお使いのコンピュータに最近のLean 4 nightlyがインストールされていれば、Lakeもインストールされているはずです。</p>
+<h2 id="lakeに関する用語集"><a class="header" href="#lakeに関する用語集">Lakeに関する用語集</a></h2>
+<!--
+Lakeは、ワークスペース、パッケージ、ライブラリ、実行ファイル、ターゲットなど、ソフトウェア開発でよく使われる用語を多く使っている一方で、facet(ファセット)のような一般的でない用語も使っています。しかし、用語が一般的であろうとなかろうと、これらの用語の意味は人によって異なる可能性があります。したがって、Lakeにおいてこれらの用語がどのように定義されているかを明記することは重要です: 
+-->
+<p>ここではパッケージに関する用語に絞って紹介します。</p>
+<!--
+### パッケージに関する用語
+-->
+<ul>
+<li>
+<p><em>project</em>(<strong>プロジェクト</strong>)は、<strong>Lakeによって作られる、適切な構造を持ったGitリポジトリ</strong>です。例えば、コマンド <code>lake new foo</code> を実行すると、次のようなファイル構造を持つフォルダ <code>foo</code> が作られます。これが初期化されたプロジェクトです。</p>
+<pre><code>└─foo
+    ├─.git
+    │   └─(省略)
+    ├─.gitignore
+    ├─lakefile.lean  # パッケージ設定ファイル
+    ├─lean-toolchain # このプロジェクトで使うLeanのバージョンを指定する
+    ├─Main.lean      # 主にバイナリ実行ファイルのビルド元として使われる
+    └─Foo.lean       # プロジェクト内の全モジュールを一括インポート(``import Foo``)するために使われる
+</code></pre>
+<p>基本的に、プロジェクトのルートには更にフォルダ <code>Foo</code> が作られ、その中に個別のleanファイルが置かれます。したがって、プロジェクトの基本的な構造は次のようになります。</p>
+<pre><code>└─foo
+    ├─.git
+    │   └─(省略)
+    ├─Foo
+    │   ├─A.lean     # 個別のLeanファイル。``import Foo.A`` を使ってインポートする
+    |   (省略)
+    ├─.gitignore
+    ├─lakefile.lean
+    ├─lean-toolchain
+    ├─Main.lean
+    └─Foo.lean
+</code></pre>
+</li>
+<li>
+<p><em>package</em>(<strong>パッケージ</strong>)は、<strong>プロジェクトのスナップショット</strong>です。<strong>Lakeにおける配布コードの基本単位</strong>とも説明されます。ただし、公式情報においてもプロジェクトとパッケージの間に明確な区別はありません。以降、このページでは統一してパッケージという用語を使います。パッケージはローカルのファイルシステムから読み込むことも、Gitを経由してWebからダウンロードすることもできます。パッケージの <code>lakefile.lean</code> の中の <code>package</code> 宣言では、パッケージに名前を付け、基本的なプロパティを定義します。</p>
+</li>
+<li>
+<p><strong>lakefile</strong>はパッケージの設定を行うLeanファイルです。lakefileはパッケージ内のコードを読む・編集する・ビルドする・実行する方法を定義し、さらにこのパッケージにおける被依存パッケージを指定します。</p>
+</li>
+<li>
+<p><em>dependency</em>(<strong>被依存パッケージ</strong>)は、あるパッケージに依存されるパッケージのことで、<em>dependent</em>(<strong>依存パッケージ</strong>)は、その被依存パッケージに依存するパッケージのことです。</p>
+</li>
+<li>
+<p><em>module</em>(<strong>モジュール</strong>)は<strong>Lakeのビルドシステムが認識できる最小のコード単位</strong>です。モジュールは一般的にLeanのソースファイル(<code>.lean</code>)とバイナリライブラリ(<code>.olean</code> と <code>.ilean</code>)で構成されます。<code>precompileModules</code> がオンの場合はシステム共有ライブラリもモジュールの構成要素となります。モジュールは他のモジュール内のコードを使用するためにそのモジュールをインポートする(<code>import &lt;module_name&gt;</code>)ことができ、Lakeは主にこのプロセスを容易にするために存在します。</p>
+</li>
+<li>
+<p><em>workspace</em>(<strong>ワークスペース</strong>)は<strong>Lakeにおける最も大きな組織単位</strong>です。ワークスペースは、パッケージ、その被依存パッケージ、Lakeの環境をまとめたものです。全てのパッケージはワークスペースのルートとして機能し、ワークスペースはルートから設定を派生させます。</p>
+</li>
+</ul>
+<h2 id="参考資料-10"><a class="header" href="#参考資料-10">参考資料</a></h2>
+<ul>
+<li><a href="https://github.com/leanprover/lake">leanprover/lake: Lean 4 build system and package manager with configuration files written in Lean.</a> : 翻訳元、公式。<code>README.md</code> に詳細な情報が書かれています。</li>
+<li><a href="https://leanprover.github.io/lean4/doc/setup.html">Extended Setup Notes - Lean Manual</a> : 公式。</li>
+<li><a href="https://m-hiyama.hatenablog.com/entry/2022/12/31/183948">プログラミング言語Lean 4の現状 - 檜山正幸のキマイラ飼育記 (はてなBlog)</a> : 檜山正幸さんによるLean 4まとめ記事です。プロジェクトとパッケージに関する記述を参考にしました。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="既存のleanプロジェクトの使い方"><a class="header" href="#既存のleanプロジェクトの使い方">既存のLeanプロジェクトの使い方</a></h1>
+<p>既存のLeanプロジェクトの使い方を説明します。ここでは、<a href="https://github.com/leanprover-community/mathematics_in_lean">Mathematics in Lean</a>を例にとります。まずターミナルを開きます。</p>
+<ul>
+<li>
+<p>もしelanとLeanのインストールに使ったターミナルを閉じずに使い続けている場合、LeanやelanやLake等にパスを通すために次のコマンドを実行してください。コマンドはOSに応じて変わります。</p>
+<pre><code class="language-sh">source ~/.profile
+</code></pre>
+<p>または</p>
+<pre><code class="language-sh">source ~/.bash_profile
+</code></pre>
+</li>
+<li>
+<p><code>cd</code> コマンドを使って使いたいパッケージを置きたいフォルダに移動します。Leanプロジェクト用のサブフォルダは自動的に作られるため、手動で作る必要はありません。</p>
+</li>
+<li>
+<p>移動先のフォルダ上で次のコマンドを実行し、Leanプロジェクト「Mathematics in Lean」をクローンします。</p>
+<pre><code class="language-sh">git clone https://github.com/leanprover-community/mathematics_in_lean.git
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、クローンしたプロジェクトのルートディレクトリに移動します。</p>
+<pre><code class="language-sh">cd mathematics_in_lean
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、キャッシュされたビルド済みファイルをダウンロードします。(このコマンドは現在、<code>mathlib4</code> をインポートするプロジェクト内でしか機能しません)</p>
+<pre><code class="language-sh">lake exe cache get
+</code></pre>
+</li>
+<li>
+<p>アプリケーションメニューから、あるいはコマンド <code>code .</code> を実行して、VS Codeを起動します。(Mac OSユーザーがコマンドラインからVS Codeを立ち上げるためには、<a href="https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line">もう1ステップ</a>作業する必要があります。)</p>
+</li>
+<li>
+<p>VS Codeを起動したら、画面上部にある <code>File</code> メニューを開き、<code>Open folder</code>(Macの場合は <code>Open</code>)をクリックし、<code>mathematics_in_lean</code> フォルダを選択します(<code>mathematics_in_lean</code> フォルダ内のサブフォルダを選ばないように注意してください)。</p>
+</li>
+<li>
+<p>左端のサイドバー内のファイルエクスプローラーを使ってサブフォルダ <code>MIL</code> の中を探し、開きたいLeanファイルを開きます。この本の練習問題に取り組む方法は<a href="https://github.com/leanprover-community/mathematics_in_lean/blob/master/README.md">MIL instructions</a>に書かれています。</p>
+</li>
+</ul>
+<h2 id="参考資料-11"><a class="header" href="#参考資料-11">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/project.html">Lean projects - Lean Community</a> : 翻訳元、公式。</li>
+<li><a href="https://github.com/leanprover-community/mathlib4/">leanprover-community/mathlib4: The math library of Lean 4</a> : 公式。</li>
+<li><a href="https://github.com/leanprover/lake">leanprover/lake: Lean 4 build system and package manager with configuration files written in Lean.</a> : 公式。<code>README.md</code> に詳細な情報が書かれています。</li>
+</ul>
+<h2 id="おすすめのleanプロジェクト教材"><a class="header" href="#おすすめのleanプロジェクト教材">おすすめのLeanプロジェクト教材</a></h2>
+<ul>
+<li>
+<p><a href="https://github.com/yuma-mizuno/lean-math-workshop">lean-math-workshop (日本語)</a> : 『<a href="https://haruhisa-enomoto.github.io/lean-math-workshop/">数学系のためのLean勉強会</a>』のために作成された教材です。Leanの基本的な使い方を学ぶBasic編と、代数・解析・圏論の各分野における定理を実際に証明するAdvanced編に分かれています。<br>
+Advanced編で証明する定理には「群の準同型定理」「閉区間[0, 1]のコンパクト性」などが含まれます。</p>
+</li>
+<li>
+<p><a href="https://github.com/leanprover-community/mathematics_in_lean">Mathematics in Lean (英語)</a> : 論理・集合から測度論・微積分までの数学の定理を実際に形式証明しながらLean 4を学ぶテキストです。</p>
+</li>
+<li>
+<p><a href="https://github.com/hrmacbeth/math2001">The mechanics of proof (英語)</a> : 計算による等式や不等式の証明から始まり、数論や代数分野の高校数学程度の問題について、形式的な証明の書き方を学べるテキストです。<br>
+<code>cancel</code>など、<a href="https://hrmacbeth.github.io/math2001/Index_of_Tactics.html">Index of Lean tactics</a>ページにおいて先頭に&quot;*&quot;が付けられたタクティクは、Leanの標準ライブラリやMathlibには存在しない、この教材独自のタクティクであることに注意してください。</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="leanプロジェクトの作り方"><a class="header" href="#leanプロジェクトの作り方">Leanプロジェクトの作り方</a></h1>
+<p>前提として、<code>Git</code> がインストールされていることをご確認ください。</p>
+<h2 id="mathlib4の使用を前提としないleanプロジェクトの新規作成方法"><a class="header" href="#mathlib4の使用を前提としないleanプロジェクトの新規作成方法">Mathlib4の使用を前提としないLeanプロジェクトの新規作成方法</a></h2>
+<p>Mathlib4の使用を前提としないLeanプロジェクト <code>my_project</code> を新規作成する手順を説明します。まずターミナルを開きます。</p>
+<ul>
+<li>
+<p>次のコマンドを実行し、<code>elan</code>・<code>lean</code>・<code>lake</code> をアップデートします。</p>
+<pre><code class="language-sh">elan update
+</code></pre>
+</li>
+<li>
+<p><code>cd</code> コマンドを使って <code>my_project</code> を作りたいフォルダに移動します。</p>
+</li>
+<li>
+<p>次のコマンドのいずれかを実行します(どちらでも結果は同じです)。新しいLeanプロジェクトが作成されます。</p>
+<pre><code class="language-sh">lake new my_project
+</code></pre>
+<p>あるいは</p>
+<pre><code class="language-sh">mkdir my_project
+cd my_project
+lake init my_project
+</code></pre>
+</li>
+</ul>
+<h2 id="mathlib4を使うleanプロジェクトの新規作成方法"><a class="header" href="#mathlib4を使うleanプロジェクトの新規作成方法">Mathlib4を使うLeanプロジェクトの新規作成方法</a></h2>
+<p>Mathlib4を使うLeanプロジェクト <code>my_project</code> を新規作成する手順を説明します。まずターミナルを開きます。</p>
+<ul>
+<li>
+<p>次のコマンドを実行し、<code>elan</code>・<code>lean</code>・<code>lake</code> をアップデートします。</p>
+<pre><code class="language-sh">elan update
+</code></pre>
+</li>
+<li>
+<p><code>cd</code> コマンドを使って <code>my_project</code> を作りたいフォルダに移動します。</p>
+</li>
+<li>
+<p>次のコマンドを実行します。Mathlib4への依存関係が設定された新しいLeanプロジェクトが作成されます。</p>
+<pre><code class="language-sh">lake new my_project math
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、作成したLeanプロジェクト内に移動します。</p>
+<pre><code class="language-sh">cd my_project
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、Mathlib4を含む被依存パッケージをダウンロードします。</p>
+<pre><code class="language-sh">lake update
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、Mathlib4のキャッシュされたビルド済ファイルをダウンロードします。</p>
+<pre><code class="language-sh">lake exe cache get
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、Leanファイルを置くためのサブディレクトリ <code>MyProject</code> を作成します。</p>
+<pre><code class="language-sh">mkdir MyProject
+</code></pre>
+</li>
+<li>
+<p>VS Codeを開き、画面上部にある <code>File</code> メニューを開き、<code>Open folder</code>(Macの場合は <code>Open</code>)をクリックし、<code>my_project</code> フォルダ(<code>MyProject</code> フォルダではありません)を選択します。</p>
+</li>
+</ul>
+<p>これでMathlib4を使うLeanプロジェクト <code>my_project</code> の新規作成は完了です。以降、プロジェクトのLeanファイル(拡張子 <code>.lean</code>)は <code>MyProject</code> フォルダかそのサブフォルダ上に作成してください。</p>
+<p>Leanプロジェクトが正常に作成され、Mathlib4内のモジュールがインポートできることを確認するには、次のような方法があります:</p>
+<ul>
+<li>
+<p>画面左端のサイドバーのファイルエクスプローラーを開き、<code>MyProject</code> フォルダにカーソルを合わせて右クリックし、<code>New File</code> をクリックし、<code>test.lean</code> という名前のファイルを作成します。</p>
+</li>
+<li>
+<p>VS Code上で <code>test.lean</code> を開き、ファイルに次のように入力します:</p>
+<pre><code class="language-lean">import Mathlib.Topology.Basic
+
+#check TopologicalSpace
+</code></pre>
+</li>
+<li>
+<p><code>#check TopologicalSpace</code> にマウスカーソルを乗せ、VS Codeの右側の「Lean Infoview」に次のように表示されたら確認完了です。</p>
+<pre><code>TopologicalSpace.{u} (α : Type u) : Type u
+</code></pre>
+</li>
+</ul>
+<p>自作Leanファイル内で他の自作Leanファイルをインポートすることもできます。例えば、<code>my_project/MyProject/Definitions.lean</code> と <code>my_project/MyProject/Lemmas.lean</code> が存在する場合、<code>Lemmas.lean</code> の先頭に次のように書くことで、<code>Definitions.lean</code> の内容が利用可能になります。</p>
+<pre><code class="language-lean">import MyProject.Definitions
+</code></pre>
+<p>何らかの理由で右側の「Lean Infoview」が消えてしまった場合は、<kbd>Ctrl</kbd>-<kbd>Shift</kbd>-<kbd>Enter</kbd>(MacOSの場合は <kbd>Cmd</kbd>-<kbd>Shift</kbd>-<kbd>Enter</kbd>)を押すことで「Lean Infoview」を復活させることができます。また、<kbd>Ctrl</kbd>-<kbd>Shift</kbd>-<kbd>p</kbd>(MacOSの場合は <kbd>Cmd</kbd>-<kbd>Shift</kbd>-<kbd>p</kbd>)を押し、コマンドを入力するテキストフィールドを表示させ、「lean doc」と入力し<kbd>Enter</kbd>を押すと、「Mathematics in Lean」や「Theorem Proving in Lean 4」といったドキュメントを読むことができます。</p>
+<h2 id="既存のプロジェクトにmathlib4への依存関係を追加する方法"><a class="header" href="#既存のプロジェクトにmathlib4への依存関係を追加する方法">既存のプロジェクトにMathlib4への依存関係を追加する方法</a></h2>
+<p>現時点でMathlib4に依存していないLeanプロジェクト <code>my_project</code> にMathlib4への依存関係を追加する手順を説明します。</p>
+<ul>
+<li>
+<p><code>my_project/lakefile.lean</code> を開き、次の記述を追加します。</p>
+<pre><code class="language-lean">require mathlib from git
+  &quot;https://github.com/leanprover-community/mathlib4&quot;
+</code></pre>
+<p>ブランチを指定することもできます。</p>
+<pre><code class="language-lean">require mathlib from git
+  &quot;https://github.com/leanprover-community/mathlib4&quot; @ &quot;master&quot;
+</code></pre>
+<p>ハッシュ値を付けてパッケージバージョン(Gitコミット)を固定することもできます。</p>
+<pre><code class="language-lean">require mathlib from git
+  &quot;https://github.com/leanprover-community/mathlib4&quot; @
+&quot;9efcb9508435caeb4281b14455f37b88f8ffc2e5&quot;
+</code></pre>
+</li>
+<li>
+<p>ターミナルを開き、フォルダ <code>my_project</code> に移動します。</p>
+</li>
+<li>
+<p>パッケージバージョンを固定しなかった場合、次のコマンドを実行し、<code>my_project</code> 内で使われるLeanのバージョンを最新のMathlib4内で使われるLeanのバージョンに合わせます。</p>
+<pre><code class="language-sh">curl -L https://raw.githubusercontent.com/leanprover-community/mathlib4/master/lean-toolchain -o lean-toolchain
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、Mathlib4を含む被依存パッケージをダウンロードします。</p>
+<pre><code class="language-sh">lake update
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、Mathlib4のキャッシュされたビルド済ファイルをダウンロードします。</p>
+<pre><code class="language-sh">lake exe cache get
+</code></pre>
+</li>
+</ul>
+<p>以上で、既存のプロジェクトからMathlib4への依存関係の追加は完了です。</p>
+<h2 id="leanプロジェクト内で被依存パッケージmathlib4をアップデートする方法"><a class="header" href="#leanプロジェクト内で被依存パッケージmathlib4をアップデートする方法">Leanプロジェクト内で、被依存パッケージMathlib4をアップデートする方法</a></h2>
+<ul>
+<li>
+<p>ターミナルを開き、フォルダ <code>my_project</code> に移動します。</p>
+</li>
+<li>
+<p>次のコマンドを実行し、<code>my_project</code> 内で使われるLeanのバージョンを最新のMathlib4内で使われるLeanのバージョンに合わせます。</p>
+<pre><code class="language-sh">curl -L https://raw.githubusercontent.com/leanprover-community/mathlib4/master/lean-toolchain -o lean-toolchain
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、Mathlib4を含む被依存パッケージをダウンロードします。</p>
+<pre><code class="language-sh">lake update
+</code></pre>
+</li>
+<li>
+<p>次のコマンドを実行し、Mathlib4のキャッシュされたビルド済ファイルをダウンロードします。</p>
+<pre><code class="language-sh">lake exe cache get
+</code></pre>
+</li>
+</ul>
+<p>以上でMathlib4のアップデートは完了です。</p>
+<h2 id="参考資料-12"><a class="header" href="#参考資料-12">参考資料</a></h2>
+<ul>
+<li><a href="https://leanprover-community.github.io/install/project.html">Lean projects - Lean Community</a> : 翻訳元、公式。</li>
+<li><a href="https://github.com/leanprover-community/mathlib4/wiki/Using-mathlib4-as-a-dependency">Using mathlib4 as a dependency · leanprover-community/mathlib4 Wiki</a> : 公式。</li>
+<li><a href="https://github.com/leanprover/lake">leanprover/lake: Lean 4 build system and package manager with configuration files written in Lean.</a> : 公式。<code>README.md</code> に詳細な情報が書かれています。</li>
+<li><a href="https://m-hiyama.hatenablog.com/entry/2022/12/31/183948">プログラミング言語Lean 4の現状 - 檜山正幸のキマイラ飼育記 (はてなBlog)</a> : 檜山正幸さんによるLean 4まとめ記事です。「Leanプロジェクト」と「Leanパッケージ」の節を参考にしました。</li>
+<li><a href="https://leanprover.zulipchat.com/#narrow/stream/113489-new-members/topic/.E2.9C.94.20Installation.20help.2C/near/358005313">Installation Help - Lean - Zuip Chat</a> : 
+Mario Carneiroさんのメッセージを参考にしました。</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lake-leanビルドシステム編"><a class="header" href="#lake-leanビルドシステム編">Lake: Leanビルドシステム編</a></h1>
+<p><strong>Lake</strong>(Lean Make)はLean 4のためのビルドシステム兼パッケージマネージャです。Lakeを使うと、Leanパッケージを作ることができ、そしてLeanパッケージの設定をLean自体で書くことができます。Leanパッケージの設定はパッケージのルートディレクトリの <code>lakefile.lean</code> というファイルに保存されます。</p>
+<p><code>lakefile.lean</code> は、パッケージの基本設定を定義する <code>package</code> 宣言を含みます。また、通常、Leanライブラリやバイナリ実行ファイルなどのためのビルド設定と、コマンドラインでコマンド <code>lake script run</code> によって実行されるLeanスクリプト宣言も含みます。</p>
+<p>この章では、Lakeのビルドシステムとしての側面に焦点を当てます。</p>
+<p>(後日更新予定)</p>
+<!--
+## Lakeに関する用語集 (他の記述より、訳語や訳内容が不正確な可能性が高いです)
+
+ここではビルドに関する用語に絞って紹介します。
+
+* *target*(**ターゲット**)は**Lakeにおけるビルド対象の基本単位**です(タクティク証明におけるターゲットとは全く異なります)。パッケージはいくつでもターゲットを定義することができます。各ターゲットには名前があり、その名前は(コマンド ``lake build <target_name>`` を使って)Lakeにターゲットのビルドを指示したり、ターゲットのビルド状況を内部的に追跡するために使われます。Lakeはビルトインのターゲット型を3つ(Leanライブラリ、バイナリ実行ファイル、他言語ライブラリ)定義していますが、ユーザーは独自のカスタムターゲット型を定義することもできます。複雑な型(パッケージ、ライブラリ、モジュール)には複数のファセットがあり、それぞれが別個のビルド可能なターゲットとしてみなされます。
+
+* *Lean library*(**Leanライブラリ**)は単一の設定を共有するモジュールの集まりです。ライブラリに含まれるモジュールはそのソースディレクトリ、*module roots*の集まり、*module globs*の集まりによって定義されます。
+
+* *Lean binary executable*(**Leanバイナリ実行ファイル**)は、*root*(**ルート**)と呼ばれる、``main`` 定義を持つLeanモジュールからビルドされるファイルです。これは、Leanがインストールされていないコンピュータ上でも実行可能なバイナリ実行ファイルです。
+
+* *external library*(**外部言語ライブラリ**)は、パッケージ内のLeanコードが機能するために必要とする、外部言語(C言語など)のネイティブかつ静的なライブラリです。例えば、パッケージ内のLeanコードは ``@[extern]`` を使って外部言語で書かれたコードを呼び出すことがあります。``extern_lib`` ターゲットは、外部言語ライブラリが必要であることをLakeに伝え、必要な外部言語ライブラリをビルドする方法をLakeに指示するために使われます。Lakeは、Leanコードが、必要とする外部言語関数(より厳密には、外部言語シンボル)にアクセスできるように、適切な時に外部言語ライブラリを自動的にリンクします。
+
+* *facet*(**ファセット**)は、他の組織単位(パッケージ、モジュール、ライブラリ)からビルドされる要素のことです。例えば、Lakeは一つのモジュールから ``olean``、``ilean``、``c``、``o`` ファイルを生成します。これらの各要素はモジュールのファセットと呼ばれます。同様に、Lakeはライブラリから静的バイナリと共有バイナリの両方をビルドすることができます。したがって、ライブラリは ``static`` ファセットと ``shared`` ファセットを持つと言えます。Lakeでは、ユーザーがモジュールやパッケージからビルドされる独自のカスタムファセットを定義することもできますが、現在、この機能は実験的なもので、まだドキュメント化されていません。
+
+* *trace*(**トレース**)は、与えられたターゲットが最新かどうかを検証するために使われるデータの一部(一般的にはハッシュ)です。ビルドされたターゲットと一緒に保存されたトレースが、ビルド中に計算されたトレースと一致する場合、ターゲットは最新であるとみなされます。ターゲットのトレースは様々な**入力**(ソースファイル、Leanツールチェーン、インポートファイルなど)から導き出されます。
+-->
+<h2 id="参考資料-13"><a class="header" href="#参考資料-13">参考資料</a></h2>
+<p><a href="https://github.com/leanprover/lake">leanprover/lake: Lean 4 build system and package manager with configuration files written in Lean.</a> : 翻訳元、公式。<code>README.md</code> に詳細な情報が書かれています。</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
+<h2 id="leanのインストール方法-1"><a class="header" href="#leanのインストール方法-1">Leanのインストール方法</a></h2>
+<p><span class="Q">Q.</span> <span class="question">VSCodeで <code>lean4</code> 拡張機能をインストールしたいのですが、「lean4」で検索しても複数の拡張機能がヒットします。どれをインストールしたらいいですか？</span></p>
+<p><span class="A">A.</span> Leanのインストール手順で紹介されている <code>lean4</code> 拡張機能は「<code>leanprover.lean4</code>」という一意の名前(Extension ID)を持ちます。「lean4」の代わりに「leanprover.lean4」で検索すれば拡張機能が1件だけヒットしますので、それをインストールしてください。</p>
+<hr />
+<p><span class="Q">Q.</span> <span class="question"><code>elan</code>・<code>lean</code>・<code>lake</code> のバイナリはどのフォルダにインストールされますか？</span></p>
+<p><span class="A">A.</span> <code>elan</code>・<code>lean</code>・<code>lake</code> のバイナリは <code>~/.elan/bin</code>(<code>$HOME/.elan/bin</code>) にインストールされます。</p>
+<hr />
+<p><span class="Q">Q.</span> <span class="question"><code>elan</code>・<code>lean</code>・<code>lake</code>(以下、「<code>lean</code> 等」とする) へのパスは自動で通りますか？</span></p>
+<p><span class="A">A.</span> 例えば、Windowsで<a href="./how-to-install/windows-quickstart.html">Quickstartインストール</a>を行った場合は環境変数に<code>~/.elan/bin</code>が自動で追加されます。また、Debianでbashをお使いの環境でインストールを行った場合は、設定ファイル<code>~/.profile</code>(あるいは <code>~/.bash_profile</code>) が自動で更新され、パスが通ります。zshをお使いの場合も設定ファイルが自動で更新されます。したがって、インストール後にターミナルを再起動すれば <code>lean</code> 等へのパスは通ります。</p>
+<p>ターミナルを再起動したくない場合は、コマンド <code>source ~/.elan/env</code> を実行すれば現在のターミナルでパスが通ります。<code>~/.elan/env</code> の内容は次の通りです。</p>
+<pre><code class="language-sh">export PATH=&quot;$HOME/.elan/bin:$PATH&quot;
+</code></pre>
+<p>しかし、ターミナル fish をお使いの場合は自動でパスが通らないことが報告されています。他のターミナルをお使いの場合も自動でパスが通らない可能性が考えられます。その際は、<code>~/.elan/env</code> の内容を参考にして各自設定ファイルを編集し、パスを通してください。</p>
+<h2 id="lake-leanパッケージマネージャ編-1"><a class="header" href="#lake-leanパッケージマネージャ編-1">Lake: Leanパッケージマネージャ編</a></h2>
+<p><span class="Q">Q.</span> <span class="question"><code>lake new &lt;project_name&gt;</code> を実行してもLeanプロジェクトが作られません。どうしたらいいですか？</span></p>
+<p><span class="A">A.</span> まずはお使いのコンピュータに <code>Git</code> がインストールされていることを確認してください。</p>
+<hr />
+<p><span class="Q">Q.</span> <span class="question">Leanプロジェクトにおいて <code>lake update</code> を実行すると次のようなエラーが出ます。どうしたらいいですか？</span></p>
+<pre><code>error: .\lakefile.lean:x:x error: unknown attribute [defaultTarget]
+</code></pre>
+<p><span class="A">A.</span> <code>lean</code> のバージョンアップに伴い、属性 <code>[defaultTarget]</code> が <code>[default_target]</code> に変更されたようです。このエラーが出た場合、<code>lake</code> のバージョンが古い可能性があります。<code>elan update</code> で <code>elan</code>・<code>lean</code>・<code>lake</code> をアップデートしてからLeanプロジェクトを作り直すか、<code>lakefile.lean</code> 内の <code>[defaultTarget]</code> を <code>[default_target]</code> に置換してください。</p>
+<hr />
+<p><span class="Q">Q.</span> <span class="question">Mathlibを使うLeanプロジェクトにおいて、コンパイルエラーが発生します。どうしたらいいですか？</span></p>
+<p><span class="A">A.</span> Mathlibの <code>lean-toolchain</code> が指定するLeanのバージョンと、Leanプロジェクトの <code>lean-toolchain</code> が指定するLeanのバージョンが食い違うことによるエラーの可能性があります。Mathlib4のバージョンを固定していない場合は、<a href="./lake-package-manager/how-to-create-project.html#lean%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%86%85%E3%81%A7%E8%A2%AB%E4%BE%9D%E5%AD%98%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8mathlib4%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">Leanプロジェクト内で、被依存パッケージMathlib4をアップデートする方法</a>を実行すれば解決する可能性があります。</p>
+<hr />
+<p><span class="Q">Q.</span> <span class="question">Mathlibを使うLeanプロジェクト内のLeanファイルを開きましたが、<code>import</code> がいつまで経っても終わりません。どうしたらいいですか？</span></p>
+<p><span class="A">A.</span> キャッシュされたビルド済ファイルが正常にダウンロードされていない可能性があります。コマンド <code>lake exe cache get</code> が未実行ならこのコマンドを実行してください。<code>lake exe cache get</code> が実行済みならコマンド <code>lake exe cache get!</code> を試してみてください。<code>lake exe cache get!</code>はキャッシュされたビルド済ファイルのダウンロードをやり直します。</p>
+<h2 id="出典"><a class="header" href="#出典">出典</a></h2>
+<p>Discordサーバー「code for math」の「#lean」チャンネル</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
