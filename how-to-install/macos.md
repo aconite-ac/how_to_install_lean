@@ -2,7 +2,7 @@
 
 ここでは、MacOSにLeanをインストールする手順を説明します。
 
-特に、M1 Mac / Apple Siliconの場合はやや複雑な手順を含みます。行き詰まった場合は、[Lean - Zulip Chat (英語)](https://leanprover.zulipchat.com/)で助けを求めてください。
+特に、M1 Mac / Apple Siliconの場合はやや複雑な手順を含みます。行き詰まった場合は、[Lean - Zulip Chat (英語)](https://leanprover.zulipchat.com/)または[lean-ja Discussions (日本語)](https://github.com/orgs/lean-ja/discussions)で助けを求めてください。
 
 ## 注意とお願い(必ずお読みください)
 

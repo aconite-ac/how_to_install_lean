@@ -11,7 +11,7 @@
 
 また、GitpodやGitHub codespacesを使うことで、インストールすることなくクラウド上でLeanを使ってみることもできます。例えば、[GitPod](https://gitpod.io/#/https://github.com/leanprover-community/mathematics_in_lean)上で練習問題を解きながら、テキスト[Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)を読むことができます。Gitpodを使うには、GitHubかGitLabにログインする必要があることに注意してください。
 
-インストールに行き詰まった場合は、[Lean - Zulip Chat (英語)](https://leanprover.zulipchat.com/)で助けを求めることを検討してください。
+インストールに行き詰まった場合は、[Lean - Zulip Chat (英語)](https://leanprover.zulipchat.com/)または[lean-ja Discussions (日本語)](https://github.com/orgs/lean-ja/discussions)で助けを求めることを検討してください。
 
 ## 参考資料
 - [Get started with Lean - Lean Community](https://leanprover-community.github.io/get_started.html) : 翻訳元、公式。
