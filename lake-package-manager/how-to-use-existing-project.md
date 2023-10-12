@@ -47,8 +47,6 @@
 - [leanprover/lake: Lean 4 build system and package manager with configuration files written in Lean.](https://github.com/leanprover/lake) : 公式。``README.md`` に詳細な情報が書かれています。
 
 ## おすすめのLeanプロジェクト教材
-
-- [Mathematics in Lean](https://github.com/leanprover-community/mathematics_in_lean)
-- [The mechanics of proof](https://github.com/hrmacbeth/math2001)
-
-(後日更新予定)
+- [lean-math-workshop (日本語)](https://github.com/yuma-mizuno/lean-math-workshop) : 『[数学系のためのLean勉強会](https://haruhisa-enomoto.github.io/lean-math-workshop/)』のために作成された教材です。Leanの基本的な使い方を学ぶBasic編と、代数・解析・圏論の各分野における定理を実際に証明するAdvanced編に分かれています。Advanced編で証明する定理には「群の準同型定理」「閉区間[0, 1]のコンパクト性」などが含まれます。
+- [Mathematics in Lean (英語)](https://github.com/leanprover-community/mathematics_in_lean) : 論理・集合から測度論・微積分までの数学の定理を実際に形式証明しながらLean 4を学ぶテキストです。
+- [The mechanics of proof (英語)](https://github.com/hrmacbeth/math2001) : 計算による等式や不等式の証明から始まり、数論や代数分野の高校数学程度の問題について、形式的な証明の書き方を学べるテキストです。`cancel`など、[Index of Lean tactics](https://hrmacbeth.github.io/math2001/Index_of_Tactics.html)ページにおいて先頭に"*"が付けられたタクティクは、この教材独自のタクティクであり、Leanの標準ライブラリやMathlibで同様のタクティクを使うことはできません。
