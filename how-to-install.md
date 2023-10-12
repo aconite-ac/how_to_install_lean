@@ -7,7 +7,7 @@
 - [MacOS](./how-to-install/macos.md)
 - [Windows](./how-to-install/windows-quickstart.md)
 
-インストール不要の[オンラインバージョン](https://lean.math.hhu.de/)もあります。
+インストール不要のオンラインバージョン、[Lean 4 Web](https://live.lean-lang.org/)もあります。
 
 また、GitpodやGitHub codespacesを使うことで、インストールすることなくクラウド上でLeanを使ってみることもできます。例えば、[GitPod](https://gitpod.io/#/https://github.com/leanprover-community/mathematics_in_lean)上で練習問題を解きながら、テキスト[Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)を読むことができます。Gitpodを使うには、GitHubかGitLabにログインする必要があることに注意してください。
 
