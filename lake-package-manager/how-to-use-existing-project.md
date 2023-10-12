@@ -53,4 +53,4 @@
 - [Mathematics in Lean (英語)](https://github.com/leanprover-community/mathematics_in_lean) : 論理・集合から測度論・微積分までの数学の定理を実際に形式証明しながらLean 4を学ぶテキストです。
 
 - [The mechanics of proof (英語)](https://github.com/hrmacbeth/math2001) : 計算による等式や不等式の証明から始まり、数論や代数分野の高校数学程度の問題について、形式的な証明の書き方を学べるテキストです。<br>
-  `cancel`など、[Index of Lean tactics](https://hrmacbeth.github.io/math2001/Index_of_Tactics.html)ページにおいて先頭に"*"が付けられたタクティクは、この教材独自のタクティクであり、Leanの標準ライブラリやMathlibで同様のタクティクを使うことはできません。
+  `cancel`など、[Index of Lean tactics](https://hrmacbeth.github.io/math2001/Index_of_Tactics.html)ページにおいて先頭に"*"が付けられたタクティクは、Leanの標準ライブラリやMathlibには存在しない、この教材独自のタクティクであることに注意してください。
